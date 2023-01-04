@@ -1,8 +1,10 @@
 import Fastify from 'fastify';
 // import fastifyStatic from '@fastify/static';
+import fastifyView from '@fastify/view';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
 // import fastifyPassport from '@fastify/passport';
+import ejs from 'ejs';
 import path from 'path';
 // import config from 'config';
 
@@ -15,6 +17,12 @@ const app = Fastify({
     },
   },
   ignoreTrailingSlash: true,
+});
+
+app.register(fastifyView, {
+  engine: {
+    ejs,
+  },
 });
 
 app.register(helmet, { global: true });
