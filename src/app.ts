@@ -20,9 +20,17 @@ const app = Fastify({
 });
 
 app.register(fastifyView, {
-  engine: {
-    ejs,
-  },
+  engine: { ejs },
+  root: './templates/blog',
+  layout: 'layout.ejs',
+  propertyName: 'blog',
+});
+
+app.register(fastifyView, {
+  engine: { ejs },
+  root: './templates/admin',
+  layout: 'layout.ejs',
+  propertyName: 'admin',
 });
 
 app.register(helmet, { global: true });
