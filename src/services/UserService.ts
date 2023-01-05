@@ -1,7 +1,7 @@
 import sequelize from 'sequelize';
 import bcrypt from 'bcryptjs';
 
-import User from '~/db/sequelize/models/User';
+import User, { UserRoles } from '~/db/sequelize/models/User';
 import { HttpError } from '~/lib/errors';
 import { passwordRegex } from '~/lib/accounts';
 
@@ -39,11 +39,15 @@ export default class UserService {
     return this.user;
   }
 
-  async login(email: string, password: string): Promise<User> {
+  async login(email: string, password: string, isAdmin = false): Promise<User> {
     this.user = await User.findOne({ where: { email } });
     const passwordIsValid = await this.validatePassword(password);
 
-    if (!this.user || !passwordIsValid) {
+    if (
+      !this.user ||
+      !passwordIsValid ||
+      (isAdmin && ![UserRoles.SuperAdmin].includes(this.user.role))
+    ) {
       throw new HttpError('Invalid email or password!', 401);
     }
 

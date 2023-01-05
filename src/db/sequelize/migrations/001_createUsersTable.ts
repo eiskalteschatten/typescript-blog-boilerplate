@@ -1,5 +1,10 @@
 import { QueryInterface, DataTypes as DataTypesNamespace } from 'sequelize';
 
+enum UserRoles {
+  SuperAdmin = 'superAdmin',
+  Subscriber = 'subscriber',
+}
+
 export default {
   up: async (query: QueryInterface, DataTypes: typeof DataTypesNamespace): Promise<void> => {
     try {
@@ -34,6 +39,11 @@ export default {
       password: {
         type: new DataTypes.STRING,
         allowNull: false,
+      },
+      role: {
+        type: new DataTypes.ENUM(...Object.values(UserRoles)),
+        allowNull: false,
+        defaultValue: UserRoles.Subscriber,
       },
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
