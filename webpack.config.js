@@ -6,7 +6,7 @@ module.exports = {
     blog: './src/frontend/blog/index.ts',
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].[ext]',
     path: __dirname + '/dist',
   },
   module: {
@@ -20,6 +20,7 @@ module.exports = {
       {
         test: /\.([cm]?ts|tsx)$/,
         loader: 'ts-loader',
+        configFile: 'tsconfig.frontend.json',
       },
     ],
   },
