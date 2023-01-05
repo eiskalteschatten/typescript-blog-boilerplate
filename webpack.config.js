@@ -6,19 +6,15 @@ module.exports = {
     adminImportant: './src/frontend/admin/important.ts',
     async: './src/frontend/blog/async.ts',
     important: './src/frontend/blog/important.ts',
+    shared: './src/styles/shared.scss',
   },
   output: {
-    filename: '[name].js',
-    path: __dirname + '/public/scripts',
+    filename: 'scripts/[name].js',
+    path: __dirname + '/public/dist',
+    clean: true,
   },
   module: {
     rules: [
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          'sass-loader',
-        ],
-      },
       {
         test: /\.([cm]?ts|tsx)$/,
         loader: 'ts-loader',
