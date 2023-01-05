@@ -6,7 +6,6 @@ module.exports = {
     adminImportant: './src/frontend/admin/important.ts',
     async: './src/frontend/blog/async.ts',
     important: './src/frontend/blog/important.ts',
-    shared: './src/styles/shared.scss',
   },
   output: {
     filename: 'scripts/[name].js',
