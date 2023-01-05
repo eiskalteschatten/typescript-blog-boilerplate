@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-// import fastifyStatic from '@fastify/static';
+import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
@@ -46,20 +46,15 @@ app.register(fastifyAutoload, {
 // app.register(fastifyPassport.initialize());
 // app.register(fastifyPassport.secureSession());
 
-if (process.env.NODE_ENV !== 'development') {
-  // Serve the built React client
+app.register(fastifyStatic, {
+  root: path.join(__dirname, '..', 'public'),
+});
 
-  // TODO!
-  // app.register(fastifyStatic, {
-  //   root: clientRoot,
-  // });
-
-  // Explicitly set the not found handler to send the React app
-  // so that the React routing works
-  // app.setNotFoundHandler((req, res) => {
-  //   res.sendFile('index.html');
-  // });
-}
+// Explicitly set the not found handler to send the React app
+// so that the React routing works
+// app.setNotFoundHandler((req, res) => {
+//   res.sendFile('index.html');
+// });
 
 const host = process.env.RUNNING_IN_DOCKER === 'true' ? '0.0.0.0' : undefined;
 

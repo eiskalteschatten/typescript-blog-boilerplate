@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "outDir": "./dist/assets/scripts",
+    "outDir": "./public/scripts",
     "baseUrl": "./src/frontend",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
