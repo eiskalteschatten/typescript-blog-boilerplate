@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint \"./**/*.{tsx,ts,js,json}\"",
-    "build": "webpack && tsc",
+    "build:scss": "sass assets/styles:public/dist/css --style compressed",
+    "build": "tsc && webpack && npm run build:scss",
     "dev:backend": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs --inspect=0.0.0.0:9229 -- src/index.ts",
     "dev:frontend": "webpack --watch",
     "dev:scss": "sass --watch assets/styles:public/dist/css",
