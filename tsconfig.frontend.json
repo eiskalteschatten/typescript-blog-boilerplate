@@ -10,13 +10,13 @@
     "esModuleInterop": true,
     "allowJs": true,
     "outDir": "./public/scripts",
-    "baseUrl": "./src/frontend",
+    "baseUrl": "./assets/scripts",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitOverride": true
   },
   "include": [
-    "src/frontend/**/*.ts"
+    "assets/**/*.ts"
   ],
   "exclude": [
     "dist",
