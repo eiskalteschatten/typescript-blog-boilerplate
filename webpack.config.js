@@ -2,8 +2,10 @@ module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devtool: 'inline-source-map',
   entry: {
-    admin: './src/frontend/admin/index.ts',
-    blog: './src/frontend/blog/index.ts',
+    adminAsync: './src/frontend/admin/async.ts',
+    adminImportant: './src/frontend/admin/important.ts',
+    async: './src/frontend/blog/async.ts',
+    important: './src/frontend/blog/important.ts',
   },
   output: {
     filename: '[name].js',
