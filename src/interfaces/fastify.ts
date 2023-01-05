@@ -1,4 +1,9 @@
-import { FastifyInstance, FastifyReply, RouteSpecificOptions } from 'fastify';
+import { FastifyInstance, FastifyReply } from 'fastify';
+
+// Copied from node_modules/@fastify/types/index.d.ts
+interface RouteSpecificOptions {
+  layout?: string;
+}
 
 // Temporary workaround for https://github.com/fastify/point-of-view/issues/301
 export interface FastifyReplyWithView extends FastifyReply {
