@@ -3,10 +3,11 @@ import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
-// import fastifyPassport from '@fastify/passport';
+import fastifyPassport from '@fastify/passport';
+import fastifySecureSession from '@fastify/secure-session';
 import ejs from 'ejs';
 import path from 'path';
-// import config from 'config';
+import config from 'config';
 
 const port = Number(process.env.PORT) || 4000;
 
@@ -39,17 +40,18 @@ app.register(fastifyAutoload, {
   dir: path.join(__dirname, 'routes'),
 });
 
-// app.register(fastifySecureSession, {
-//   secret: config.get<string>('auth.session.secret'),
-//   salt: config.get<string>('auth.session.salt'),
-// });
-// app.register(fastifyPassport.initialize());
-// app.register(fastifyPassport.secureSession());
+app.register(fastifySecureSession, {
+  secret: config.get<string>('auth.session.secret'),
+  salt: config.get<string>('auth.session.salt'),
+});
+app.register(fastifyPassport.initialize());
+app.register(fastifyPassport.secureSession());
 
 app.register(fastifyStatic, {
   root: path.join(__dirname, '..', 'public'),
 });
 
+// TODO!
 // Explicitly set the not found handler to send the React app
 // so that the React routing works
 // app.setNotFoundHandler((req, res) => {
