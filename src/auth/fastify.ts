@@ -1,11 +1,15 @@
 import fastifyPassport from '@fastify/passport';
 
-const getFastifyPreValidationLocal = (prefix = '') => ({
+export const fastifyPreValidationLocal = {
   preValidation: fastifyPassport.authenticate('local', {
-    successRedirect: `${prefix}/`,
-    failureRedirect: `${prefix}/login`,
+    successRedirect: '/',
+    failureRedirect: '/login',
   }),
-});
+};
 
-export const fastifyPreValidationLocal = getFastifyPreValidationLocal();
-export const fastifyPreValidationLocalAdmin = getFastifyPreValidationLocal('admin');
+export const fastifyPreValidationLocalAdmin = {
+  preValidation: fastifyPassport.authenticate('localAdmin', {
+    successRedirect: '/admin',
+    failureRedirect: '/admin/login',
+  }),
+};
