@@ -4,11 +4,17 @@ import fastifyView from '@fastify/view';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
 import fastifyCookie from '@fastify/cookie';
-import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
+import fastifySession from '@fastify/session';
+import connectRedis from 'connect-redis';
 import ejs from 'ejs';
 import path from 'path';
 import config from 'config';
+
+import redisClient from './db/redis';
+
+// Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
+const RedisStore = connectRedis(fastifySession as any);
 
 const port = Number(process.env.PORT) || 4000;
 
@@ -42,7 +48,14 @@ app.register(fastifyAutoload, {
 });
 
 app.register(fastifyCookie);
-app.register(fastifySession, { secret: config.get<string>('auth.session.secret') });
+
+app.register(fastifySession, {
+  secret: config.get<string>('auth.session.secret'),
+  store: new RedisStore({
+    client: redisClient,
+  }) as any,  // Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
+});
+
 app.register(fastifyPassport.initialize());
 app.register(fastifyPassport.secureSession());
 
