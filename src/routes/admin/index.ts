@@ -1,7 +1,9 @@
-import { FastifyRequest, FastifyReply, FastifyInstance } from 'fastify';
+import { FastifyRequest } from 'fastify';
 
-export default async (app: FastifyInstance) => {
-  app.get('/', (req: FastifyRequest, reply: FastifyReply) => {
+import { FastifyInstanceWithView, FastifyReplyWithView } from '~/interfaces/fastify';
+
+export default async (app: FastifyInstanceWithView) => {
+  app.get('/', (req: FastifyRequest, reply: FastifyReplyWithView) => {
     reply.admin('home.ejs');
   });
 };
