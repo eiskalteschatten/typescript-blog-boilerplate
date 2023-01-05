@@ -47,6 +47,7 @@ app.register(fastifyAutoload, {
   dir: path.join(__dirname, 'routes'),
 });
 
+// Necessary for @fastify/session
 app.register(fastifyCookie);
 
 app.register(fastifySession, {
@@ -54,6 +55,7 @@ app.register(fastifySession, {
   store: new RedisStore({
     client: redisClient,
   }) as any,  // Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
+  saveUninitialized: false,
 });
 
 app.register(fastifyPassport.initialize());
