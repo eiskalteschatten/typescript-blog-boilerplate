@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint",
     "lint": "eslint \"./**/*.{tsx,ts,js,json}\"",
-    "build": "tsc",
+    "build": "webpack && tsc",
     "dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs --inspect=0.0.0.0:9229 -- src/index.ts",
     "prestart": "node ./dist/bootstrap.js",
     "start": "node ./dist/index.js",
@@ -41,7 +41,8 @@
     "ts-loader": "^9.4.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.4",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "@fastify/autoload": "^5.7.0",
