@@ -3,8 +3,9 @@ import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
+import fastifyCookie from '@fastify/cookie';
+import fastifySession from '@fastify/session';
 import fastifyPassport from '@fastify/passport';
-import fastifySecureSession from '@fastify/secure-session';
 import ejs from 'ejs';
 import path from 'path';
 import config from 'config';
@@ -40,10 +41,8 @@ app.register(fastifyAutoload, {
   dir: path.join(__dirname, 'routes'),
 });
 
-app.register(fastifySecureSession, {
-  secret: config.get<string>('auth.session.secret'),
-  salt: config.get<string>('auth.session.salt'),
-});
+app.register(fastifyCookie);
+app.register(fastifySession, { secret: config.get<string>('auth.session.secret') });
 app.register(fastifyPassport.initialize());
 app.register(fastifyPassport.secureSession());
 

@@ -15,8 +15,7 @@ module.exports = {
   },
   auth: {
     session: {
-      secret: process.env.AUTH_SESSION_SECRET,
-      salt: process.env.AUTH_SALT || '',
+      secret: process.env.AUTH_SESSION_SECRET || 'this is a long string of 32 characters or more that must be changed',
     },
   },
   jwt: {
