@@ -1,1 +1,1 @@
-console.log('blog!');
+console.log('admin!');
