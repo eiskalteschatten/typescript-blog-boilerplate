@@ -7,7 +7,9 @@
     "test": "npm run lint",
     "lint": "eslint \"./**/*.{tsx,ts,js,json}\"",
     "build": "webpack && tsc",
-    "dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs --inspect=0.0.0.0:9229 -- src/index.ts",
+    "dev:backend": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs --inspect=0.0.0.0:9229 -- src/index.ts",
+    "dev:frontend": "webpack --watch",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "prestart": "node ./dist/bootstrap.js",
     "start": "node ./dist/index.js",
     "prepare": "husky install"
@@ -30,6 +32,7 @@
     "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.48.0",
     "@typescript-eslint/parser": "^5.48.0",
+    "concurrently": "^7.6.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.31.0",
     "eslint-import-resolver-typescript": "^3.5.2",
