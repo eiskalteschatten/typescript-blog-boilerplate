@@ -12,6 +12,7 @@ import path from 'path';
 import config from 'config';
 
 import redisClient from './db/redis';
+import UserService from './services/UserService';
 
 // Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
 const RedisStore = connectRedis(fastifySession as any);
@@ -79,5 +80,10 @@ app.listen({ port, host }, error => {
     throw error;
   }
 });
+
+if (process.env.CREATE_DEFAULT_USER) {
+  const userService = new UserService();
+  userService.createDefaultUser();
+}
 
 export default app;

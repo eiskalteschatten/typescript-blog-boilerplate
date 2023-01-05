@@ -5,6 +5,14 @@ import User, { UserRoles } from '~/db/sequelize/models/User';
 import { HttpError } from '~/lib/errors';
 import { passwordRegex } from '~/lib/accounts';
 
+interface RegistrationData {
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  role: UserRoles;
+}
+
 export default class UserService {
   user: User;
   private readonly saltRounds = 12;
@@ -13,7 +21,7 @@ export default class UserService {
     this.user = await User.findByPk(id);
   }
 
-  async register(registrationData: User): Promise<User> {
+  async register(registrationData: RegistrationData): Promise<User> {
     const existingUser: User = await User.findOne({
       where: sequelize.where(
         sequelize.fn('lower', sequelize.col('User.email')),
@@ -61,5 +69,23 @@ export default class UserService {
 
     const isValid = await bcrypt.compare(password, this.user.password);
     return isValid;
+  }
+
+  async createDefaultUser(): Promise<void> {
+    const defaultUser: RegistrationData = {
+      email: process.env.DEFAULT_USER_EMAIL,
+      firstName: process.env.DEFAULT_USER_FIRST_NAME,
+      lastName: process.env.DEFAULT_USER_LAST_NAME,
+      password:  process.env.DEFAULT_USER_PASSWORD,
+      role: UserRoles.SuperAdmin,
+    };
+
+    Object.values(defaultUser).forEach(value => {
+      if (!value) {
+        throw new Error('You need to define the default user data using env variables! See createDefaultUser() in the UserService.');
+      }
+    });
+
+    await this.register(defaultUser);
   }
 }

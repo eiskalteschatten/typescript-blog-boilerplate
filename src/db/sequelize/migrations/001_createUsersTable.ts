@@ -16,7 +16,7 @@ export default {
       // created later
     }
 
-    return query.createTable('users', {
+    await query.createTable('users', {
       id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,

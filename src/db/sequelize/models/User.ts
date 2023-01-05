@@ -8,14 +8,14 @@ export enum UserRoles {
 }
 
 export default class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
-  declare id: CreationOptional<number>;
+  declare id?: CreationOptional<number>;
   declare email: string;
   declare firstName: string;
   declare lastName: string;
   declare password: string;
   declare role: UserRoles;
-  declare createdAt: CreationOptional<Date>;
-  declare updatedAt: CreationOptional<Date>;
+  declare createdAt?: CreationOptional<Date>;
+  declare updatedAt?: CreationOptional<Date>;
 }
 
 User.init(
