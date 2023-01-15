@@ -67,8 +67,6 @@ app.register(fastifyStatic, {
 });
 
 // TODO!
-// Explicitly set the not found handler to send the React app
-// so that the React routing works
 // app.setNotFoundHandler((req, res) => {
 //   res.sendFile('index.html');
 // });
