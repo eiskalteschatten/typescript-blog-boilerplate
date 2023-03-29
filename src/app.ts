@@ -6,16 +6,13 @@ import { fastifyAutoload } from '@fastify/autoload';
 import fastifyCookie from '@fastify/cookie';
 import fastifyPassport from '@fastify/passport';
 import fastifySession from '@fastify/session';
-import connectRedis from 'connect-redis';
+import RedisStore from 'connect-redis';
 import ejs from 'ejs';
 import path from 'path';
 import config from 'config';
 
 import redisClient from './db/redis';
 import UserService from './services/UserService';
-
-// Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
-const RedisStore = connectRedis(fastifySession as any);
 
 const port = Number(process.env.PORT) || 4000;
 
