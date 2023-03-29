@@ -30,7 +30,6 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/config": "^3.3.0",
-    "@types/connect-redis": "^0.0.20",
     "@types/ejs": "^3.1.1",
     "@types/node": "^18.11.18",
     "@types/passport-local": "^1.0.34",

@@ -52,7 +52,7 @@ app.register(fastifySession, {
   secret: config.get<string>('auth.session.secret'),
   store: new RedisStore({
     client: redisClient,
-  }) as any,  // Use 'any' here as per the documentation: https://github.com/fastify/session#typescript-support
+  }),
   saveUninitialized: false,
 });
 
