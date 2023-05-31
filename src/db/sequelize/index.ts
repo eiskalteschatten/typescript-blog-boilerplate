@@ -20,15 +20,15 @@ setupMigration({
 export async function setupSequelize(): Promise<Sequelize> {
   try {
     await sequelize.authenticate();
-    logger.info('The connection to PostgreSQL has been established successfully.');
+    logger.info('The connection to MariaDB has been established successfully.');
 
     if (process.env.DISABLE_DB_MIGRATION !== 'true') {
       await migrate();
-      logger.info('PostgreSQL migration scripts successfully executed.');
+      logger.info('MariaDB migration scripts successfully executed.');
     }
   }
   catch (error) {
-    logger.error('Unable to connect to PostgreSQL: ' + error);
+    logger.error('Unable to connect to MariaDB: ' + error);
   }
 
   return sequelize;

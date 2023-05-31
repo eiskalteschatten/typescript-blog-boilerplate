@@ -1,18 +1,17 @@
 version: "3.8"
 
 services:
-  postgres:
-    image: postgres:14-alpine
-    container_name: tbb_postgres
-    restart: always
-    volumes:
-      - "tbb_postgresql_data:/var/lib/postgresql/data"
-    environment:
-      POSTGRES_DB: tbb
-      POSTGRES_USER: tbb
-      POSTGRES_PASSWORD: tbb
+  db:
+    image: mariadb:10
     ports:
-      - "5432:5432"
+        - "3306:3306"
+    volumes:
+        - "tbb_mariadb_data:/var/lib/mysql"
+    environment:
+        - MYSQL_ROOT_PASSWORD=wordpress
+        - MYSQL_DATABASE=wordpress
+        - MYSQL_USER=wordpress
+        - MYSQL_PASSWORD=wordpress
 
   redis:
     image: redis:alpine
@@ -22,4 +21,4 @@ services:
       - 6379:6379
 
 volumes:
-  tbb_postgresql_data:
+  tbb_mariadb_data:
