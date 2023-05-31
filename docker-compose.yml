@@ -8,10 +8,10 @@ services:
     volumes:
         - "tbb_mariadb_data:/var/lib/mysql"
     environment:
-        - MYSQL_ROOT_PASSWORD=wordpress
-        - MYSQL_DATABASE=wordpress
-        - MYSQL_USER=wordpress
-        - MYSQL_PASSWORD=wordpress
+        - MYSQL_ROOT_PASSWORD=tbb
+        - MYSQL_DATABASE=tbb
+        - MYSQL_USER=tbb
+        - MYSQL_PASSWORD=tbb
 
   redis:
     image: redis:alpine
