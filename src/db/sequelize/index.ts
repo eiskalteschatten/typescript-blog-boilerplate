@@ -5,7 +5,7 @@ import path from 'path';
 
 import logger from '~/lib/logger';
 
-const options = config.get<Options>('postgres');
+const options = config.get<Options>('db');
 
 const sequelize = new Sequelize(options);
 
