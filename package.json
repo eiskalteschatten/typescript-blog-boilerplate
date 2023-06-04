@@ -11,7 +11,7 @@
     "postbuild": "sass assets/styles:public/dist --style compressed",
     "dev:backend": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --rs --inspect=0.0.0.0:9229 -- src/main.ts",
     "dev:frontend": "cross-env NODE_ENV=development webpack --watch",
-    "dev:scss": "sass --watch assets/styles:public/dist --update",
+    "dev:scss": "sass --watch assets/styles:public/dist",
     "dev": "concurrently  \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:scss\"",
     "prestart": "node ./dist/bootstrap.js",
     "start": "node ./dist/main.js",
