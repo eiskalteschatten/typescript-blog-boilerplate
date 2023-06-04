@@ -88,9 +88,4 @@ app.listen({ port, host }, error => {
   }
 });
 
-if (process.env.CREATE_DEFAULT_USER) {
-  const userService = new UserService();
-  userService.createDefaultUser();
-}
-
 export default app;
