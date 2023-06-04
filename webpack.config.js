@@ -8,7 +8,7 @@ module.exports = {
     // bootstrap: { import: './assets/scripts/bootstrap.ts', filename: 'bootstrap.js' },
     admin: { import: './assets/scripts/admin/index.ts', filename: 'admin/scripts.js' },
     blog: { import: './assets/scripts/blog/index.ts', filename: 'blog/scripts.js' },
-    webComponents: { import: './assets/webComponents/index.ts', filename: 'web-components.js' },
+    webComponents: { import: './assets/webComponents/index.ts', filename: 'webComponents.js' },
 
   },
   output: {
