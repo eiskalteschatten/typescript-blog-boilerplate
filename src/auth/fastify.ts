@@ -10,6 +10,6 @@ export const fastifyPreValidationLocal = {
 export const fastifyPreValidationLocalAdmin = {
   preValidation: fastifyPassport.authenticate('localAdmin', {
     successRedirect: '/admin',
-    failureRedirect: '/admin/login',
+    failureRedirect: '/login',
   }),
 };
