@@ -8,6 +8,8 @@ interface RouteSpecificOptions {
 // Temporary workaround for https://github.com/fastify/point-of-view/issues/301
 export interface FastifyReplyWithView extends FastifyReply {
   view: never;
+  auth<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): FastifyReply;
+  auth(page: string, data?: object, opts?: RouteSpecificOptions): FastifyReply;
   blog<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): FastifyReply;
   blog(page: string, data?: object, opts?: RouteSpecificOptions): FastifyReply;
   admin<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): FastifyReply;
@@ -17,6 +19,8 @@ export interface FastifyReplyWithView extends FastifyReply {
 // Temporary workaround for https://github.com/fastify/point-of-view/issues/301
 export interface FastifyInstanceWithView extends FastifyInstance {
   view: never;
+  auth<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): Promise<string>;
+  auth(page: string, data?: object, opts?: RouteSpecificOptions): Promise<string>;
   blog<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): Promise<string>;
   blog(page: string, data?: object, opts?: RouteSpecificOptions): Promise<string>;
   admin<T extends { [key: string]: any }>(page: string, data: T, opts?: RouteSpecificOptions): Promise<string>;

@@ -9,6 +9,6 @@ export default async (app: FastifyInstanceWithView) => {
       return;
     }
 
-    reply.blog('login.ejs');
+    reply.auth('login.ejs');
   });
 };

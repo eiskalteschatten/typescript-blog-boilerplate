@@ -27,6 +27,13 @@ const app = Fastify({
 
 app.register(fastifyView, {
   engine: { ejs },
+  root: './templates/auth',
+  layout: 'layout.ejs',
+  propertyName: 'auth',
+});
+
+app.register(fastifyView, {
+  engine: { ejs },
   root: './templates/blog',
   layout: 'layout.ejs',
   propertyName: 'blog',
