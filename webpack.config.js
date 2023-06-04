@@ -4,10 +4,8 @@ module.exports = {
   entry: {
     shared: { import: './assets/scripts/shared.ts', filename: 'scripts/shared.js' },
     bootstrap: { import: './assets/scripts/bootstrap.ts', filename: 'scripts/bootstrap.js' },
-    adminAsync: { import: './assets/scripts/admin/async.ts', filename: 'scripts/admin/async.js' },
-    adminImportant: { import: './assets/scripts/admin/important.ts', filename: 'scripts/admin/important.js' },
-    blogAsync: { import: './assets/scripts/blog/async.ts', filename: 'scripts/async.js' },
-    blogImportant: { import: './assets/scripts/blog/important.ts', filename: 'scripts/important.js' },
+    admin: { import: './assets/scripts/admin/scripts.ts', filename: 'scripts/admin/scripts.js' },
+    blog: { import: './assets/scripts/blog/scripts.ts', filename: 'scripts/scripts.js' },
   },
   output: {
     filename: 'scripts/[name].js',
