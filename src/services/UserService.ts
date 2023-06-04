@@ -5,11 +5,12 @@ import User, { UserRoles } from '~/db/models/User';
 import { HttpError } from '~/lib/errors';
 import { passwordRegex } from '~/lib/accounts';
 
-interface RegistrationData {
+export interface RegistrationData {
   email: string;
   firstName: string;
   lastName: string;
   password: string;
+  confirmPassword: string;
   role: UserRoles;
 }
 
@@ -31,6 +32,10 @@ export default class UserService {
 
     if (existingUser) {
       throw new HttpError('A user with this email address already exists!', 409);
+    }
+
+    if (registrationData.password !== registrationData.confirmPassword) {
+      throw new HttpError('The passwords you entered do not match!', 400);
     }
 
     if (!registrationData.password.match(passwordRegex)) {

@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 import { FastifyInstanceWithView, FastifyReplyWithView } from '~/interfaces/fastify';
+import UserService, { RegistrationData } from '~/services/UserService';
 
 export default async (app: FastifyInstanceWithView) => {
   app.get('/', (req: FastifyRequest, reply: FastifyReply) => {
@@ -27,6 +28,18 @@ export default async (app: FastifyInstanceWithView) => {
     reply.auth('register.ejs', {
       title: 'Create an Account',
     });
+  });
+
+  app.post<{ Body: RegistrationData }>('/register', async (req: FastifyRequest, reply: FastifyReply) => {
+    const registrationData = req.body;
+
+    const userService = new UserService();
+    await userService.register(registrationData);
+
+    // TODO: return if there's an error with the view
+    // TODO: log the user in
+
+    reply.redirect('/');
   });
 
   app.post('/logout', (req: FastifyRequest, reply: FastifyReply) => {
