@@ -1,6 +1,6 @@
 <h5 class="text-center mb-5">Welcome to the Blog!</h5>
 
-<% if (error) { %>
+<% if (typeof error !== 'undefined') { %>
   <div class="alert alert-danger" role="alert"><%=error%></div>
 <% } %>
 

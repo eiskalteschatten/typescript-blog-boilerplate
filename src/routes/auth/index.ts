@@ -15,7 +15,6 @@ export default async (app: FastifyInstanceWithView) => {
 
     reply.auth('login.ejs', {
       title: 'Login',
-      error: null,
     });
   });
 
@@ -27,7 +26,6 @@ export default async (app: FastifyInstanceWithView) => {
 
     reply.auth('register.ejs', {
       title: 'Create an Account',
-      error: null,
     });
   });
 

@@ -11,7 +11,7 @@
     />
     <meta name="color-scheme" content="light dark">
 
-    <title><%= title ? `${title} - Blog` : 'Blog' %></title>
+    <title><%= typeof title !== 'undefined' ? `${title} - Blog` : 'Blog' %></title>
 
     <link rel='icon' type='image/svg+xml' href='/images/favicon.svg'>
 
