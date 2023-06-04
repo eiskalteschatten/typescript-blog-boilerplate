@@ -47,15 +47,11 @@ export default class UserService {
     return this.user;
   }
 
-  async login(email: string, password: string, isAdmin = false): Promise<User> {
+  async login(email: string, password: string): Promise<User> {
     this.user = await User.findOne({ where: { email } });
     const passwordIsValid = await this.validatePassword(password);
 
-    if (
-      !this.user ||
-      !passwordIsValid ||
-      (isAdmin && ![UserRoles.SuperAdmin].includes(this.user.role))
-    ) {
+    if (!this.user || !passwordIsValid) {
       throw new HttpError('Invalid email or password!', 401);
     }
 

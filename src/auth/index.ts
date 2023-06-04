@@ -20,22 +20,6 @@ fastifyPassport.use('local', new LocalStrategy(async (username: string, password
   }
 }));
 
-fastifyPassport.use('localAdmin', new LocalStrategy(async (username: string, password: string, done: Function): Promise<void> => {
-  try {
-    const userService = new UserService();
-    const user = await userService.login(username, password, true);
-
-    if (!user) {
-      return done(null, false);
-    }
-
-    return done(null, user);
-  }
-  catch (error) {
-    done(error);
-  }
-}));
-
 fastifyPassport.registerUserSerializer(async (user: User) => user.id);
 
 fastifyPassport.registerUserDeserializer(async (id: number) => {
