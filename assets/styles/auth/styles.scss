@@ -1,48 +1,54 @@
 @import "../variables";
 
-.right-side {
-  $width: 375px;
-  width: 100vw;
-  max-width: $width;
-
-  @media (min-width: $lgMin) {
-    width: $width;
+.auth-form {
+  .left-side {
+    width: 400px;
   }
 
-  .or {
-    text-align: center;
-    position: relative;
+  .right-side {
+    $width: 375px;
+    width: 100vw;
+    max-width: $width;
 
-    &::before {
-      content: '';
-      height: 1px;
-      width: calc(100% - 100px);
-      left: 50px;
-      top: 55%;
-      background-color: var(--color);
-      display: block;
-      position: absolute;
-      z-index: 0;
-      opacity: .2;
+    @media (min-width: $lgMin) {
+      width: $width;
     }
 
-    .or-text {
-      background: var(--background-color);
-      padding: 0 10px;
+    .or {
+      text-align: center;
       position: relative;
-      font-size: .8em;
+
+      &::before {
+        content: '';
+        height: 1px;
+        width: calc(100% - 100px);
+        left: 50px;
+        top: 55%;
+        background-color: var(--color);
+        display: block;
+        position: absolute;
+        z-index: 0;
+        opacity: .2;
+      }
+
+      .or-text {
+        background: var(--background-color);
+        padding: 0 10px;
+        position: relative;
+        font-size: .8em;
+      }
     }
   }
-}
 
-.auth-input {
-  min-width: 275px;
+  .auth-input {
+    min-width: 275px;
 
-  @media (min-width: $lgMin) {
-    width: 100%;
+    @media (min-width: $lgMin) {
+      width: 100%;
+    }
   }
-}
 
-.auth-footer {
-  font-size: .9em;
+  .auth-footer {
+    font-size: .9em;
+  }
 }
