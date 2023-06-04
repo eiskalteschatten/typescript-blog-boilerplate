@@ -19,6 +19,18 @@ export default async (app: FastifyInstanceWithView) => {
     });
   });
 
+  app.get('/register', (req: FastifyRequest, reply: FastifyReplyWithView) => {
+    if (req.isAuthenticated()) {
+      reply.redirect('/');
+      return;
+    }
+
+    reply.auth('register.ejs', {
+      title: 'Create an Account',
+      error: null,
+    });
+  });
+
   app.post('/logout', (req: FastifyRequest, reply: FastifyReply) => {
     req.logout();
     reply.redirect('/auth/login');
