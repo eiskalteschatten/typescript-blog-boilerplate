@@ -1,0 +1,4 @@
+square-card {
+  $boxShadowOffset: 20px;
+  max-width: calc(100% - #{$boxShadowOffset});
+}
