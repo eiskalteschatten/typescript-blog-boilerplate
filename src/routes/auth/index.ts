@@ -14,8 +14,11 @@ export default async (app: FastifyInstanceWithView) => {
       return;
     }
 
+    const csrfToken = reply.generateCsrf();
+
     reply.auth('login.ejs', {
       title: 'Login',
+      csrfToken,
     });
   });
 
@@ -25,12 +28,15 @@ export default async (app: FastifyInstanceWithView) => {
       return;
     }
 
+    const csrfToken = reply.generateCsrf();
+
     reply.auth('register.ejs', {
       title: 'Create an Account',
+      csrfToken,
     });
   });
 
-  app.post('/register', async (req: FastifyRequest, reply: FastifyReplyWithView) => {
+  app.post('/register', { preValidation: app.csrfProtection }, async (req: FastifyRequest, reply: FastifyReplyWithView) => {
     const registrationData = req.body as RegistrationData;
 
     try {
@@ -42,8 +48,11 @@ export default async (app: FastifyInstanceWithView) => {
       return reply.redirect('/');
     }
     catch (error) {
+      const csrfToken = reply.generateCsrf();
+
       return reply.auth('register.ejs', {
         title: 'Create an Account',
+        csrfToken,
         error: error.message,
       });
     }

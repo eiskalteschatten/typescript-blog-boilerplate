@@ -16,7 +16,7 @@
   </div>
 
   <div class="text-center mt-4">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
     <button type="submit" class="button primary large">Log In</button>
   </div>
 </form>

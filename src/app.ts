@@ -7,6 +7,7 @@ import { fastifyAutoload } from '@fastify/autoload';
 import fastifyCookie from '@fastify/cookie';
 import fastifyPassport from '@fastify/passport';
 import fastifySession from '@fastify/session';
+import fastifyCsrfProtection from '@fastify/csrf-protection';
 import sequelizeStore from 'connect-session-sequelize';
 import ejs from 'ejs';
 import path from 'path';
@@ -78,6 +79,10 @@ app.register(fastifyStatic, {
 // app.setNotFoundHandler((req, res) => {
 //   res.sendFile('index.html');
 // });
+
+app.register(fastifyCsrfProtection, {
+  sessionPlugin: '@fastify/session',
+});
 
 const host = process.env.RUNNING_IN_DOCKER === 'true' ? '0.0.0.0' : undefined;
 
