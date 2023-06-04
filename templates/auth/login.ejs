@@ -4,7 +4,7 @@
   <div class="alert alert-danger" role="alert"><%=error%></div>
 <% } %>
 
-<form action="/login" method="post" class="d-flex flex-column align-items-center ">
+<form action="/login" method="post" class="d-flex flex-column align-items-center">
   <div class="form-group">
     <label for="username" class="form-label">Username</label>
     <input type="text" id="username" name="_username" required="required" class="input auth-input">
@@ -21,4 +21,14 @@
   </div>
 </form>
 
-Don't have an account yet? <a href="/auth/register">Create an Account</a>
+<div class="or my-4 opacity-50">
+  <span class="or-text">or</span>
+</div>
+
+<footer class="auth-footer opacity-75 text-center">
+  Don't have an account yet? <a href="/auth/register">Create an Account</a>
+
+  <div class="mt-4">
+      <a href="/" class="secondary-link">Back to the Homepage</a>
+  </div>
+</footer>
