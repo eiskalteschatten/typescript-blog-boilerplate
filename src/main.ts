@@ -6,8 +6,8 @@ import './auth';
 
 import { setupSequelize } from './db/sequelize';
 
-async function setup(): Promise<void> {
+async function main(): Promise<void> {
   await setupSequelize();
 }
 
-setup();
+main();
