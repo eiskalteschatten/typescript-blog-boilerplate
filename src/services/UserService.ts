@@ -1,7 +1,7 @@
 import sequelize from 'sequelize';
 import bcrypt from 'bcryptjs';
 
-import User, { UserRoles } from '~/db/models/User';
+import User from '~/db/models/User';
 import { HttpError } from '~/lib/errors';
 import { passwordRegex } from '~/lib/accounts';
 
@@ -11,7 +11,6 @@ export interface RegistrationData {
   lastName: string;
   password: string;
   confirmPassword: string;
-  role: UserRoles;
 }
 
 export default class UserService {

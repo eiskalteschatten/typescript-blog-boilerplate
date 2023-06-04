@@ -39,10 +39,10 @@ export default async (app: FastifyInstanceWithView) => {
 
       // TODO: log the user in
 
-      reply.redirect('/');
+      return reply.redirect('/');
     }
     catch (error) {
-      reply.auth('register.ejs', {
+      return reply.auth('register.ejs', {
         title: 'Create an Account',
         error: error.message,
       });
