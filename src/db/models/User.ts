@@ -1,6 +1,6 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize';
 
-import sequelize from '~/db/sequelize';
+import sequelize from '~/db';
 
 export enum UserRoles {
   SuperAdmin = 'superAdmin',

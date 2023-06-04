@@ -1,4 +1,4 @@
-import User from './db/sequelize/models/User';
+import User from './db/models/User';
 
 declare module 'fastify' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
