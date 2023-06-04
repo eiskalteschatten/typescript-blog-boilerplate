@@ -71,22 +71,4 @@ export default class UserService {
     const isValid = await bcrypt.compare(password, this.user.password);
     return isValid;
   }
-
-  async createDefaultUser(): Promise<void> {
-    const defaultUser: RegistrationData = {
-      email: process.env.DEFAULT_USER_EMAIL,
-      firstName: process.env.DEFAULT_USER_FIRST_NAME,
-      lastName: process.env.DEFAULT_USER_LAST_NAME,
-      password:  process.env.DEFAULT_USER_PASSWORD,
-      role: UserRoles.SuperAdmin,
-    };
-
-    Object.values(defaultUser).forEach(value => {
-      if (!value) {
-        throw new Error('You need to define the default user data using env variables! See createDefaultUser() in the UserService.');
-      }
-    });
-
-    await this.register(defaultUser);
-  }
 }
