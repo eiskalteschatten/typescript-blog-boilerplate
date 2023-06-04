@@ -28,21 +28,21 @@ const app = Fastify({
 app.register(fastifyView, {
   engine: { ejs },
   root: './templates/auth',
-  layout: 'layout.ejs',
+  layout: '_layout.ejs',
   propertyName: 'auth',
 });
 
 app.register(fastifyView, {
   engine: { ejs },
   root: './templates/blog',
-  layout: 'layout.ejs',
+  layout: '_layout.ejs',
   propertyName: 'blog',
 });
 
 app.register(fastifyView, {
   engine: { ejs },
   root: './templates/admin',
-  layout: 'layout.ejs',
+  layout: '_layout.ejs',
   propertyName: 'admin',
 });
 
