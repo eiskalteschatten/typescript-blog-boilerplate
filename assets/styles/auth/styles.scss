@@ -34,3 +34,11 @@
     }
   }
 }
+
+.auth-input {
+  min-width: 275px;
+
+  @media (min-width: $lgMin) {
+    width: 100%;
+  }
+}

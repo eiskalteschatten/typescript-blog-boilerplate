@@ -11,6 +11,7 @@ export default async (app: FastifyInstanceWithView) => {
 
     reply.auth('login.ejs', {
       title: 'Login',
+      error: null,
     });
   });
 };
