@@ -1,6 +1,7 @@
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
+import formBody from '@fastify/formbody';
 import helmet from '@fastify/helmet';
 import { fastifyAutoload } from '@fastify/autoload';
 import fastifyCookie from '@fastify/cookie';
@@ -24,6 +25,8 @@ const app = Fastify({
   },
   ignoreTrailingSlash: true,
 });
+
+app.register(formBody);
 
 app.register(fastifyView, {
   engine: { ejs },

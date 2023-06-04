@@ -30,16 +30,23 @@ export default async (app: FastifyInstanceWithView) => {
     });
   });
 
-  app.post<{ Body: RegistrationData }>('/register', async (req: FastifyRequest, reply: FastifyReply) => {
-    const registrationData = req.body;
+  app.post('/register', async (req: FastifyRequest, reply: FastifyReplyWithView) => {
+    const registrationData = req.body as RegistrationData;
 
-    const userService = new UserService();
-    await userService.register(registrationData);
+    try {
+      const userService = new UserService();
+      await userService.register(registrationData);
 
-    // TODO: return if there's an error with the view
-    // TODO: log the user in
+      // TODO: log the user in
 
-    reply.redirect('/');
+      reply.redirect('/');
+    }
+    catch (error) {
+      reply.auth('register.ejs', {
+        title: 'Create an Account',
+        error: error.message,
+      });
+    }
   });
 
   app.post('/logout', (req: FastifyRequest, reply: FastifyReply) => {
