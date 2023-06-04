@@ -12,7 +12,6 @@ import ejs from 'ejs';
 import path from 'path';
 import config from 'config';
 
-import UserService from './services/UserService';
 import sequelize from './db';
 
 const port = Number(process.env.PORT) || 4000;
