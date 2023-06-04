@@ -13,6 +13,8 @@
 
     <title>Blog</title>
 
+    <link rel="icon" href="/images/favicon.svg">
+
     <link rel="stylesheet" href="/dist/bootstrap.css">
     <link rel="stylesheet" href="/dist/shared.css">
     <link rel="stylesheet" href="/dist/auth/styles.css">
@@ -23,10 +25,13 @@
   <body>
     <main class="w-100 h-100 d-flex align-items-center justify-content-center">
       <square-card class="d-flex align-items-center">
-        <div>
-          left side
+        <div class="d-none d-lg-flex align-items-center justify-content-center left-side">
+          <picture>
+            <source srcSet="/images/icon-monotone-white.svg" media='(prefers-color-scheme: dark)'>
+            <img src="/images/icon-monotone-black.svg" class="w-100">
+          </picture>
         </div>
-        <div class="p-4">
+        <div class="p-4 right-side">
           <%- body %>
         </div>
       </square-card>
