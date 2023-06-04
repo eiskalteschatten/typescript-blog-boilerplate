@@ -1,7 +1,7 @@
 import fastifyPassport from '@fastify/passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
-import User from '~/db/sequelize/models/User';
+import User from '~/db/models/User';
 import UserService from '~/services/UserService';
 
 fastifyPassport.use('local', new LocalStrategy(async (username: string, password: string, done: Function): Promise<void> => {
