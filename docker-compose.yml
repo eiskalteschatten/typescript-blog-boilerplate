@@ -13,12 +13,5 @@ services:
         - MYSQL_USER=tbb
         - MYSQL_PASSWORD=tbb
 
-  redis:
-    image: redis:alpine
-    restart: always
-    container_name: tbb_redis
-    ports:
-      - 6379:6379
-
 volumes:
   tbb_mariadb_data:

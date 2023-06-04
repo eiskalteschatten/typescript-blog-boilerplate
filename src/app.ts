@@ -6,12 +6,10 @@ import { fastifyAutoload } from '@fastify/autoload';
 import fastifyCookie from '@fastify/cookie';
 import fastifyPassport from '@fastify/passport';
 import fastifySession from '@fastify/session';
-import RedisStore from 'connect-redis';
 import ejs from 'ejs';
 import path from 'path';
 import config from 'config';
 
-import redisClient from './db/redis';
 import UserService from './services/UserService';
 
 const port = Number(process.env.PORT) || 4000;
@@ -48,6 +46,7 @@ app.register(fastifyAutoload, {
 // Necessary for @fastify/session
 app.register(fastifyCookie);
 
+// TODO: replace the store with: https://www.npmjs.com/package/connect-session-sequelize
 app.register(fastifySession, {
   secret: config.get<string>('auth.session.secret'),
   store: new RedisStore({
