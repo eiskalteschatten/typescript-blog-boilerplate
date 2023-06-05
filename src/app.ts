@@ -1,4 +1,4 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyRequest } from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyView from '@fastify/view';
 import formBody from '@fastify/formbody';
@@ -14,6 +14,7 @@ import path from 'path';
 import config from 'config';
 
 import sequelize from './db';
+import { FastifyReplyWithView } from './interfaces/fastify';
 
 const port = Number(process.env.PORT) || 4000;
 
@@ -75,10 +76,9 @@ app.register(fastifyStatic, {
   root: path.join(process.cwd(), 'public'),
 });
 
-// TODO!
-// app.setNotFoundHandler((req, res) => {
-//   res.sendFile('index.html');
-// });
+app.setNotFoundHandler((req: FastifyRequest, reply: FastifyReplyWithView) => {
+  reply.blog('404.ejs');
+});
 
 app.register(fastifyCsrfProtection, {
   sessionPlugin: '@fastify/session',
