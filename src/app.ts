@@ -72,7 +72,7 @@ app.register(fastifyPassport.initialize());
 app.register(fastifyPassport.secureSession());
 
 app.register(fastifyStatic, {
-  root: path.join(__dirname, '..', 'public'),
+  root: path.join(process.cwd(), 'public'),
 });
 
 // TODO!
