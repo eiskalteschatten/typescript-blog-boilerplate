@@ -14,7 +14,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: __dirname + '/public/dist',
-    clean: true,
+    clean: process.env.NODE_ENV !== 'development',
   },
   plugins: [
     new MiniCssExtractPlugin(),
